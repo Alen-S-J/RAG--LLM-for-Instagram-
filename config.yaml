@@ -1,0 +1,33 @@
+llm:
+  provider: google
+  config:
+    model: gemma-3-4b-it
+    max_tokens: 1024
+    temperature: 0.5
+    prompt: |
+      Use the following pieces of context to answer the query at the end.
+      The context may include Instagram video transcripts, captions, user interactions, hashtags, and metadata.
+      Focus on the creator's content style, themes, audience engagement, or trends.
+      If you don't know the answer, just say that you don't know—do not try to make up an answer.
+
+      $context
+
+      Query: $query
+
+      Helpful Answer:
+   
+    top_p: 1
+    stream: false
+
+embedder:
+  provider: google
+  config:
+    model: 'models/embedding-001'
+    task_type: "retrieval_document"
+    title: "Embeddings for Embedchain"
+
+vectordb:
+  provider: chroma
+  config:
+    collection_name: 'my-collection'
+    dir: ./db

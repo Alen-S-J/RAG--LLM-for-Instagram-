@@ -1,0 +1,5 @@
+python-dotenv
+gradio
+embedchain
+torch 
+google-generativeai
